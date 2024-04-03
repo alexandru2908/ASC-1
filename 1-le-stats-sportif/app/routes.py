@@ -1,5 +1,6 @@
 from app import webserver
 from flask import request, jsonify
+from app.data_ingestor import DataIngestor 
 
 import os
 import json
@@ -27,6 +28,14 @@ def get_response(job_id):
     print(f"JobID is {job_id}")
     # TODO
     # Check if job_id is valid
+    if job_id not in webserver.tasks_runner.get_ids:
+        return jsonify({"status": "error","reason": "Invalid job_id"})
+    elif job_id in webserver.tasks_runner.get_ids and os.path.exists(f"./results/{job_id}.json"):
+        with open(f"./results/{job_id}.json","r") as f:
+            res = f.read()
+        return jsonify({ "status": "done", "data": res })
+    else:
+        return jsonify({"status": "running"})
 
     # Check if job_id is done and return the result
     #    res = res_for(job_id)
@@ -42,7 +51,9 @@ def get_response(job_id):
 def states_mean_request():
     # Get request data
     data = request.json
-    print(f"Got request {data}")
+    # print(f"Got request {data}")
+    # if data["question"] == "Percent of adults aged 18 years and older who have an overweight classification":
+    #     print("haolo")
 
     # TODO
     # Register job. Don't wait for task to finish
@@ -54,12 +65,21 @@ def states_mean_request():
 @webserver.route('/api/state_mean', methods=['POST'])
 def state_mean_request():
     # TODO
+    data = request.json
+    print(data["state"])
+    webserver.tasks_runner.submit(webserver.job_counter, lambda: webserver.data_ingestor.get_state_data(data))
+    webserver.job_counter += 1
     # Get request data
     # Register job. Don't wait for task to finish
     # Increment job_id counter
     # Return associated job_id
+    # data = request.json
+    # print("Intrebare " + data["question"] + '\n' + "Stat " + data["state"] + '\n') 
+    # dates = DataIngestor("nutrition_activity_obesity_usa_subset.csv")
+    # print(dates.get_state_data(data["state"]))
+    
 
-    return jsonify({"status": "NotImplemented"})
+    return jsonify({"job_id": webserver.job_counter - 1})
 
 
 @webserver.route('/api/best5', methods=['POST'])
