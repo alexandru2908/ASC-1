@@ -139,6 +139,12 @@ def diff_from_mean_request():
     # Register job. Don't wait for task to finish
     # Increment job_id counter
     # Return associated job_id
+    
+    data = request.json
+    webserver.tasks_runner.submit(webserver.job_counter, lambda: webserver.data_ingestor.diff_from_mean(data))
+    webserver.job_counter += 1
+
+    return jsonify({"job_id": webserver.job_counter - 1})
 
     return jsonify({"status": "NotImplemented"})
 
@@ -149,6 +155,12 @@ def state_diff_from_mean_request():
     # Register job. Don't wait for task to finish
     # Increment job_id counter
     # Return associated job_id
+    
+    data = request.json
+    webserver.tasks_runner.submit(webserver.job_counter, lambda: webserver.data_ingestor.diff_from_mean_state(data))
+    webserver.job_counter += 1
+
+    return jsonify({"job_id": webserver.job_counter - 1})
 
     return jsonify({"status": "NotImplemented"})
 
@@ -159,6 +171,12 @@ def mean_by_category_request():
     # Register job. Don't wait for task to finish
     # Increment job_id counter
     # Return associated job_id
+    
+    data = request.json
+    webserver.tasks_runner.submit(webserver.job_counter, lambda: webserver.data_ingestor.mean_by_category(data))
+    webserver.job_counter += 1
+
+    return jsonify({"job_id": webserver.job_counter - 1})
 
     return jsonify({"status": "NotImplemented"})
 
@@ -169,6 +187,12 @@ def state_mean_by_category_request():
     # Register job. Don't wait for task to finish
     # Increment job_id counter
     # Return associated job_id
+
+    data = request.json
+    webserver.tasks_runner.submit(webserver.job_counter, lambda: webserver.data_ingestor.mean_by_category(data))
+    webserver.job_counter += 1
+
+    return jsonify({"job_id": webserver.job_counter - 1})
 
     return jsonify({"status": "NotImplemented"})
 

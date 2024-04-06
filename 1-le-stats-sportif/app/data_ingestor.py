@@ -53,14 +53,13 @@ class DataIngestor:
         result_sorted = dict(sorted(result.items(), key=lambda x:x[1]))
         return json.dumps(result_sorted)
 
-    
-    
 
     def get_state_data(self, data):
         data_question = self.content[self.content['Question'] == data["question"]]
-        state = data["state"]
         
-        result = {data["state"]: 0}
+        
+        state = data['state']
+        result= {state: 0}
         state_appearance = 0
         l = []
         for i in data_question.iterrows():
@@ -70,9 +69,6 @@ class DataIngestor:
                 state_appearance += 1
                 
         result[state] = result[state] / state_appearance
-        with open("logs.txt", "w") as f:
-            f.write(str(l))
-        
         
         return json.dumps(result)
     
@@ -102,6 +98,42 @@ class DataIngestor:
         data_question = self.content[self.content['Question'] == data["question"]]
         return json.dumps({"global_mean": data_question['Data_Value'].mean()})
     
+    
+    def diff_from_mean(self, data):
+        states_mean = self.get_states_data(data)
+        states_mean_json = json.loads(states_mean)
+        global_mean = self.global_mean(data)
+        global_mean_json = json.loads(global_mean)
+        for key, value in states_mean_json.items():
+            states_mean_json[key] = global_mean_json['global_mean'] - value
+            
+        return json.dumps(states_mean_json)
+    
+    def diff_from_mean_state(self, date):
+        
+      
+        # state_mean = self.get_state_data(data)
+        with open("logs.txt", "w") as f:
+            f.write(str(date))
+        state_mean = self.get_state_data(date)
+        state_mean_json = json.loads(state_mean)        
+        global_mean = self.global_mean(date)
+        global_mean_json = json.loads(global_mean)
+        
+        return json.dumps({date["state"]: global_mean_json["global_mean"] - state_mean_json[date["state"]]}) 
+    
+    
+    def mean_by_category(self, data):
+        # data_question = self.content[self.content['Question'] == data["question"]]
+        
+                    
+        return json.dumps({1: 2})
+        
+        
+        
+        
+        
+        
             
         
         
