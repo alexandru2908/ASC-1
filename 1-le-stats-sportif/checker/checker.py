@@ -46,9 +46,9 @@ class TestAPI(unittest.TestCase):
     # def test_states_mean(self):
     #     self.helper_test_endpoint("states_mean")
 
-    @unittest.skipIf(ONLY_LAST, "Checking only the last added test")
-    def test_state_mean(self):
-        self.helper_test_endpoint("state_mean")
+    # @unittest.skipIf(ONLY_LAST, "Checking only the last added test")
+    # def test_state_mean(self):
+    #     self.helper_test_endpoint("state_mean")
 
     # @unittest.skipIf(ONLY_LAST, "Checking only the last added test")
     # def test_best5(self):
@@ -58,9 +58,9 @@ class TestAPI(unittest.TestCase):
     # def test_worst5(self):
     #     self.helper_test_endpoint("worst5")
 
-    # @unittest.skipIf(ONLY_LAST, "Checking only the last added test")
-    # def test_global_mean(self):
-    #     self.helper_test_endpoint("global_mean")
+    @unittest.skipIf(ONLY_LAST, "Checking only the last added test")
+    def test_global_mean(self):
+        self.helper_test_endpoint("global_mean")
 
     # @unittest.skipIf(ONLY_LAST, "Checking only the last added test")
     # def test_diff_from_mean(self):
@@ -88,7 +88,7 @@ class TestAPI(unittest.TestCase):
         test_score = test_suite_score / len(input_files)
         local_score = 0
 
-        for input_file in input_files[:1]:
+        for input_file in input_files:
             # Get the index from in-idx.json
             # The idx is between a dash (-) and a dot (.)
             idx = input_file.split('-')[1]
@@ -113,6 +113,7 @@ class TestAPI(unittest.TestCase):
                     res_callable = lambda: requests.get(f"http://127.0.0.1:5000/api/get_results/{job_id}"),
                     ref_result = ref_result,
                     timeout_sec = 1)
+                
                 
                 local_score += test_score
         total_score += min(round(local_score), test_suite_score)

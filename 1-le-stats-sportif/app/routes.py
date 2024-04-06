@@ -28,13 +28,21 @@ def get_response(job_id):
     print(f"JobID is {job_id}")
     # TODO
     # Check if job_id is valid
-    if job_id not in webserver.tasks_runner.get_ids:
+    
+    with open(f"buna.txt","w") as f:
+            f.write(str(webserver.tasks_runner.get_ids))
+    if int(job_id) not in webserver.tasks_runner.get_ids:
+       
         return jsonify({"status": "error","reason": "Invalid job_id"})
-    elif job_id in webserver.tasks_runner.get_ids and os.path.exists(f"./results/{job_id}.json"):
+    elif int(job_id) in webserver.tasks_runner.get_ids and os.path.exists(f"results/{job_id}.json"):
+        
         with open(f"./results/{job_id}.json","r") as f:
-            res = f.read()
-        return jsonify({ "status": "done", "data": res })
+        #     res = f.read()
+        # return jsonify({ "status": "done", "data": jsonify(res) })
+            result = json.load(f)
+        return jsonify({ "status": "done", "data": result })
     else:
+        
         return jsonify({"status": "running"})
 
     # Check if job_id is done and return the result
@@ -50,33 +58,32 @@ def get_response(job_id):
 @webserver.route('/api/states_mean', methods=['POST'])
 def states_mean_request():
     # Get request data
-    data = request.json
-    # print(f"Got request {data}")
-    # if data["question"] == "Percent of adults aged 18 years and older who have an overweight classification":
-    #     print("haolo")
-
     # TODO
     # Register job. Don't wait for task to finish
     # Increment job_id counter
     # Return associated job_id
+    
+    data = request.json
+    webserver.tasks_runner.submit(webserver.job_counter, lambda: webserver.data_ingestor.get_states_data(data))
+    webserver.job_counter += 1
 
-    return jsonify({"status": "NotImplemented"})
+    
+
+    return jsonify({"job_id": webserver.job_counter - 1})
 
 @webserver.route('/api/state_mean', methods=['POST'])
 def state_mean_request():
     # TODO
+    
     data = request.json
-    print(data["state"])
     webserver.tasks_runner.submit(webserver.job_counter, lambda: webserver.data_ingestor.get_state_data(data))
     webserver.job_counter += 1
     # Get request data
     # Register job. Don't wait for task to finish
     # Increment job_id counter
     # Return associated job_id
-    # data = request.json
-    # print("Intrebare " + data["question"] + '\n' + "Stat " + data["state"] + '\n') 
-    # dates = DataIngestor("nutrition_activity_obesity_usa_subset.csv")
-    # print(dates.get_state_data(data["state"]))
+    
+    
     
 
     return jsonify({"job_id": webserver.job_counter - 1})
@@ -84,13 +91,17 @@ def state_mean_request():
 
 @webserver.route('/api/best5', methods=['POST'])
 def best5_request():
+    
+    data = request.json
+    webserver.tasks_runner.submit(webserver.job_counter, lambda: webserver.data_ingestor.best_5(data))
+    webserver.job_counter += 1
     # TODO
     # Get request data
     # Register job. Don't wait for task to finish
     # Increment job_id counter
     # Return associated job_id
 
-    return jsonify({"status": "NotImplemented"})
+    return jsonify({"job_id": webserver.job_counter - 1})
 
 @webserver.route('/api/worst5', methods=['POST'])
 def worst5_request():
@@ -99,8 +110,12 @@ def worst5_request():
     # Register job. Don't wait for task to finish
     # Increment job_id counter
     # Return associated job_id
+    
+    data = request.json
+    webserver.tasks_runner.submit(webserver.job_counter, lambda: webserver.data_ingestor.worst_5(data))
+    webserver.job_counter += 1
 
-    return jsonify({"status": "NotImplemented"})
+    return jsonify({"job_id": webserver.job_counter - 1})
 
 @webserver.route('/api/global_mean', methods=['POST'])
 def global_mean_request():
@@ -109,6 +124,11 @@ def global_mean_request():
     # Register job. Don't wait for task to finish
     # Increment job_id counter
     # Return associated job_id
+    data = request.json
+    webserver.tasks_runner.submit(webserver.job_counter, lambda: webserver.data_ingestor.global_mean(data))
+    webserver.job_counter += 1
+
+    return jsonify({"job_id": webserver.job_counter - 1})
 
     return jsonify({"status": "NotImplemented"})
 

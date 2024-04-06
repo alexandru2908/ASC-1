@@ -23,18 +23,20 @@ class ThreadPool:
         self.threads = []
         self.get_ids = []
         
-        pass
+        
     
     def start(self):
         for i in range(self.num_threads):
             thread = TaskRunner(self)
             self.threads.append(thread)
             thread.start()
-        pass
+        
     
     def submit(self, id, task):
         self.task_queue.put((task, id))
         self.get_ids.append(id)
+        # with open(f"buna.txt","w") as f:
+        #     f.write(str(id))
         
         
 
@@ -44,9 +46,10 @@ class TaskRunner(Thread):
         super().__init__()
         self.task_queue = tp.task_queue
         
-        # TODO: init necessary data structures
-        pass
+        
     
+        
+        
     def run(self):
         while True:
             if self.task_queue.empty():
@@ -55,13 +58,15 @@ class TaskRunner(Thread):
                 current_task = self.task_queue.get()
                 result = current_task[0]()
                 with open(f"./results/{current_task[1]}.json","w") as f:
-                    # f.write(current_task.execute())
-                    f.write(str(result))
-                    f.write('\n')
+                    f.write(str(result)+'\n')
+                    
+                
+                
+                
             
             
             # TODO
             # Get pending job
             # Execute the job and save the result to disk
             # Repeat until graceful_shutdown
-            pass
+            
