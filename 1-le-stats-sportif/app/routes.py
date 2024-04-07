@@ -2,6 +2,7 @@ from app import webserver
 from flask import request, jsonify
 from app.data_ingestor import DataIngestor 
 
+
 import os
 import json
 
@@ -189,12 +190,30 @@ def state_mean_by_category_request():
     # Return associated job_id
 
     data = request.json
-    webserver.tasks_runner.submit(webserver.job_counter, lambda: webserver.data_ingestor.mean_by_category(data))
+    webserver.tasks_runner.submit(webserver.job_counter, lambda: webserver.data_ingestor.mean_by_category_state(data))
     webserver.job_counter += 1
 
     return jsonify({"job_id": webserver.job_counter - 1})
 
     return jsonify({"status": "NotImplemented"})
+
+
+@webserver.route('/api/jobs', methods=['GET'])
+def jobs():
+    d = {}
+    d["status"] = "done"
+    d["data"] = {[]}
+    for i in webserver.tasks_runner.get_ids:
+        result = get_response(i)
+        # d["data"]["job_id_" + str(i)] = result["status"]
+        d.data.append({"job_id_" + str(i): result["status"]})
+        
+    return jsonify(d)
+
+# @webserver.route('/api/graceful_shutdown', methods=['GET'])
+# def graceful_shutdown():
+    
+        
 
 # You can check localhost in your browser to see what this displays
 @webserver.route('/')

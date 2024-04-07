@@ -124,10 +124,96 @@ class DataIngestor:
     
     
     def mean_by_category(self, data):
-        # data_question = self.content[self.content['Question'] == data["question"]]
+        data_question = self.content[self.content['Question'] == data["question"]]
+        
+        
+        states = set(data_question['LocationDesc'])
+        
+        
+        result= {}
+        count = {}
+        
+        states = sorted(states)
+        with open ("logs.txt", "w") as f:
+            f.write(str(states))
+        
+        
+        # for i in states:
+        #     data_state = data_question[data_question['LocationDesc'] == i]
+        #     stratification = sorted(set(data_state['Stratification1']))
+        #     for j in stratification:
+        #         for k in data_state.iterrows():
+        #             if k[1]['Stratification1'] == j:
+        #                 t = (i, k[1]['StratificationCategory1'], j)
+        #                 result[str(t)] = 0
+        #                 count[str(t)] = 0
+        for i in states:
+            data_state = data_question[data_question['LocationDesc'] == i]
+            stratification = set(data_state['StratificationCategory1'])
+            for j in stratification:
+                data_stratification = data_state[data_state['StratificationCategory1'] == j]
+                for k in data_stratification.iterrows():
+                    t = (i, j, k[1]['Stratification1'])
+                    if str(t) not in result:
+                        result[str(t)] = k[1]['Data_Value']
+                    else:
+                        result[str(t)] += k[1]['Data_Value']
+                    if str(t) not in count:
+                        count[str(t)] = 1
+                    else:
+                        count[str(t)] += 1
+                    
+
+        for key, value in result.items():
+            result[key] = value / count[key]
+            
+        return json.dumps(result)
+                    
+    
+    def mean_by_category_state(self, data):
+        data_question = self.content[self.content['Question'] == data["question"]]
+        data_state = data_question[data_question['LocationDesc'] == data["state"]]
+        
+        data_stratification_set = set(data_state['Stratification1'])
+        state = data['state']
+        stratification = {}
+        stratification[state] = {}
+        count_stratification = {}
+        count_stratification[state] = {}
+        
+        for i in data_stratification_set:
+            for j in data_state.iterrows():
+                if j[1]['Stratification1'] == i:
+                    t= (j[1]['StratificationCategory1'], i)
+                    if str(t) not in stratification[state]:
+                        stratification[state][str(t)] = j[1]['Data_Value']
+                    else:
+                        stratification[state][str(t)] += j[1]['Data_Value']
+                    if str(t) not in count_stratification[state]:
+                        count_stratification[state][str(t)] = 1
+                    else:
+                        count_stratification[state][str(t)] += 1
+                    
+        for key, value in stratification[state].items():
+            stratification[state][key] = value / count_stratification[state][key]
+            
+            
+        return json.dumps(stratification)
+                
+        
+        
+        
+                
+        
+                
+        
+                
+                
+        
+        
         
                     
-        return json.dumps({1: 2})
+        
         
         
         
