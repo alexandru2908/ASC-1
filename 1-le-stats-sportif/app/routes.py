@@ -1,10 +1,15 @@
 from app import webserver
 from flask import request, jsonify
 from app.data_ingestor import DataIngestor 
+import logging, logging.handlers
+import time
 
 
 import os
 import json
+
+
+
 
 # Example endpoint definition
 @webserver.route('/api/post_endpoint', methods=['POST'])
@@ -64,9 +69,12 @@ def states_mean_request():
     # Increment job_id counter
     # Return associated job_id
     
+    
     data = request.json
+    
     webserver.tasks_runner.submit(webserver.job_counter, lambda: webserver.data_ingestor.get_states_data(data))
     webserver.job_counter += 1
+    
 
     
 
@@ -77,6 +85,7 @@ def state_mean_request():
     # TODO
     
     data = request.json
+    
     webserver.tasks_runner.submit(webserver.job_counter, lambda: webserver.data_ingestor.get_state_data(data))
     webserver.job_counter += 1
     # Get request data
@@ -210,8 +219,13 @@ def jobs():
         
     return jsonify(d)
 
-# @webserver.route('/api/graceful_shutdown', methods=['GET'])
-# def graceful_shutdown():
+@webserver.route('/api/graceful_shutdown', methods=['GET'])
+def graceful_shutdown():
+    webserver.task_runner.is_alive = False
+    return jsonify({"status": "shutting_down"})
+
+
+@webserver.route('/api/health', methods=['GET'])
     
         
 

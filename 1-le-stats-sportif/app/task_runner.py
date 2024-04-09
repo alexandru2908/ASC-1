@@ -22,6 +22,7 @@ class ThreadPool:
         self.task_queue = Queue()
         self.threads = []
         self.get_ids = []
+        self.is_active = True
         
         
     
@@ -45,25 +46,34 @@ class TaskRunner(Thread):
         # self.thread_pool = tp
         super().__init__()
         self.task_queue = tp.task_queue
-        
-        
-    
+        self.is_alive = tp.is_active
         
         
     def run(self):
         while True:
-            if self.task_queue.empty():
-                continue
+            if self.is_alive:
+                if self.task_queue.empty():
+                    continue
+                else:
+                    current_task = self.task_queue.get()
+                    result = current_task[0]()
+                    with open(f"./results/{current_task[1]}.json","w") as f:
+                        f.write(str(result)+'\n')
+            
             else:
-                current_task = self.task_queue.get()
-                result = current_task[0]()
-                with open(f"./results/{current_task[1]}.json","w") as f:
-                    f.write(str(result)+'\n')
+                if self.task_queue.empty():
+                    break
+                else:
+                    for i in range(self.task_queue.qsize()):
+                        current_task = self.task_queue.get()
+                        result = current_task[0]()
+                        with open(f"./results/{current_task[1]}.json","w") as f:
+                            f.write(str(result)+'\n')
+                    break
+        
+            
                     
                 
-                
-                
-            
             
             # TODO
             # Get pending job

@@ -1,14 +1,31 @@
 import os
 import json
 import pandas as pd
-from flask import jsonify
-import csv
+import logging, logging.handlers
+from logging.handlers import RotatingFileHandler
+import time
+
 
 class DataIngestor:
     def __init__(self, csv_path: str):
         # TODO: Read csv from csv_path
         
         pd.options.display.max_rows = 999999
+        
+        
+        self.logger = logging.handlers.RotatingFileHandler("webserver.log", maxBytes = 10000, backupCount = 10)
+
+        self.logger.setFormatter(logging.Formatter("%(asctime)s - %(message)s", "%Y-%m-%d %H:%M:%S"))
+
+        self.logger.time = time.gmtime()
+
+        self.logger1 = logging.getLogger("webserver")
+
+        self.logger1.addHandler(self.logger)
+
+        self.logger1.setLevel(logging.INFO)
+
+        self.logger1.info("webserver started")
         
         
 
@@ -35,6 +52,7 @@ class DataIngestor:
         
         data_question = self.content[self.content['Question'] == data["question"]]
         states = set(data_question['LocationDesc'])
+        self.logger1.info("get_states_data called" + str(data))
         
         result = {}
         states_appearance = {}
@@ -55,9 +73,9 @@ class DataIngestor:
 
 
     def get_state_data(self, data):
+        self.logger1.info("get_state_data called" + str(data))
+        
         data_question = self.content[self.content['Question'] == data["question"]]
-        
-        
         state = data['state']
         result= {state: 0}
         state_appearance = 0
@@ -73,6 +91,7 @@ class DataIngestor:
         return json.dumps(result)
     
     def best_5(self, data):
+        self.logger1.info("best_5 called" + str(data))
         res = self.get_states_data(data)
         res_json = json.loads(res)
         list_res = list(res_json.items())
@@ -83,6 +102,7 @@ class DataIngestor:
     
     
     def worst_5(self, data):
+        self.logger1.info("worst_5 called" + str(data))
         res = self.get_states_data(data)
         res_json = json.loads(res)
         list_res = list(res_json.items())
@@ -95,11 +115,13 @@ class DataIngestor:
     
     
     def global_mean(self, data):
+        self.logger1.info("global_mean called" + str(data))
         data_question = self.content[self.content['Question'] == data["question"]]
         return json.dumps({"global_mean": data_question['Data_Value'].mean()})
     
     
     def diff_from_mean(self, data):
+        self.logger1.info("diff_from_mean called" + str(data))
         states_mean = self.get_states_data(data)
         states_mean_json = json.loads(states_mean)
         global_mean = self.global_mean(data)
@@ -110,9 +132,8 @@ class DataIngestor:
         return json.dumps(states_mean_json)
     
     def diff_from_mean_state(self, date):
+        self.logger1.info("diff_from_mean_state called" + str(date))
         
-      
-        # state_mean = self.get_state_data(data)
         with open("logs.txt", "w") as f:
             f.write(str(date))
         state_mean = self.get_state_data(date)
@@ -124,6 +145,7 @@ class DataIngestor:
     
     
     def mean_by_category(self, data):
+        self.logger1.info("mean_by_category called" + str(data))
         data_question = self.content[self.content['Question'] == data["question"]]
         
         
@@ -137,16 +159,6 @@ class DataIngestor:
         with open ("logs.txt", "w") as f:
             f.write(str(states))
         
-        
-        # for i in states:
-        #     data_state = data_question[data_question['LocationDesc'] == i]
-        #     stratification = sorted(set(data_state['Stratification1']))
-        #     for j in stratification:
-        #         for k in data_state.iterrows():
-        #             if k[1]['Stratification1'] == j:
-        #                 t = (i, k[1]['StratificationCategory1'], j)
-        #                 result[str(t)] = 0
-        #                 count[str(t)] = 0
         for i in states:
             data_state = data_question[data_question['LocationDesc'] == i]
             stratification = set(data_state['StratificationCategory1'])
@@ -171,6 +183,9 @@ class DataIngestor:
                     
     
     def mean_by_category_state(self, data):
+        
+        self.logger1.info("mean_by_category_state called" + str(data))
+        
         data_question = self.content[self.content['Question'] == data["question"]]
         data_state = data_question[data_question['LocationDesc'] == data["state"]]
         
@@ -199,7 +214,11 @@ class DataIngestor:
             
             
         return json.dumps(stratification)
-                
+    
+    
+
+    
+    
         
         
         
