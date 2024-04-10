@@ -1,5 +1,5 @@
 from queue import Queue
-from threading import Thread
+from threading import Thread, Lock
 import os
 
 class ThreadPool:
@@ -21,7 +21,9 @@ class ThreadPool:
         self.task_queue = Queue()
         self.threads = []
         self.get_ids = []
+        self.tasks_done = []
         self.is_active = True
+        self.my_lock = Lock()
     def start(self):
         """
         Start the thread pool
@@ -41,6 +43,8 @@ class TaskRunner(Thread):
         super().__init__()
         self.task_queue = tp.task_queue
         self.is_alive = tp.is_active
+        self.lock = tp.my_lock
+        self.tasks_done = tp.tasks_done
     def run(self):
         """
         Get pending job
@@ -56,6 +60,9 @@ class TaskRunner(Thread):
                     result = current_task[0]()
                     with open(f"./results/{current_task[1]}.json", "w") as file:
                         file.write(str(result)+'\n')
+                    self.lock.acquire()
+                    self.tasks_done.append(current_task[1])
+                    self.lock.release()
             else:
                 if self.task_queue.empty():
                     break
@@ -65,5 +72,8 @@ class TaskRunner(Thread):
                         result = current_task[0]()
                         with open(f"./results/{current_task[1]}.json", "w") as file:
                             file.write(str(result)+'\n')
+                        self.lock.acquire()
+                        self.tasks_done.append(current_task[1])
+                        self.lock.release()
                     break
             

@@ -1,41 +1,41 @@
-2024-04-10 09:48:10 - mean_by_category_state called{'question': 'Percent of adults aged 18 years and older who have obesity', 'state': 'Oklahoma'}
-2024-04-10 09:48:10 - mean_by_category_state called{'question': 'Percent of adults aged 18 years and older who have an overweight classification', 'state': 'Wisconsin'}
-2024-04-10 09:48:11 - mean_by_category_state called{'question': 'Percent of adults who achieve at least 150 minutes a week of moderate-intensity aerobic physical activity or 75 minutes a week of vigorous-intensity aerobic physical activity and engage in muscle-strengthening activities on 2 or more days a week', 'state': 'Oklahoma'}
-2024-04-10 09:48:11 - mean_by_category_state called{'question': 'Percent of adults aged 18 years and older who have obesity', 'state': 'Connecticut'}
-2024-04-10 09:48:11 - mean_by_category_state called{'question': 'Percent of adults aged 18 years and older who have an overweight classification', 'state': 'Connecticut'}
-2024-04-10 09:48:11 - mean_by_category_state called{'question': 'Percent of adults who achieve at least 150 minutes a week of moderate-intensity aerobic physical activity or 75 minutes a week of vigorous-intensity aerobic physical activity and engage in muscle-strengthening activities on 2 or more days a week', 'state': 'Connecticut'}
-2024-04-10 09:48:12 - mean_by_category_state called{'question': 'Percent of adults who report consuming vegetables less than one time daily', 'state': 'Wisconsin'}
-2024-04-10 09:48:12 - mean_by_category_state called{'question': 'Percent of adults who achieve at least 150 minutes a week of moderate-intensity aerobic physical activity or 75 minutes a week of vigorous-intensity aerobic physical activity and engage in muscle-strengthening activities on 2 or more days a week', 'state': 'Wisconsin'}
-2024-04-10 09:48:12 - mean_by_category_state called{'question': 'Percent of adults aged 18 years and older who have obesity', 'state': 'Wisconsin'}
-2024-04-10 09:48:12 - mean_by_category_state called{'question': 'Percent of adults aged 18 years and older who have an overweight classification', 'state': 'Georgia'}
-2024-04-10 09:48:13 - mean_by_category_state called{'question': 'Percent of adults who engage in muscle-strengthening activities on 2 or more days a week', 'state': 'Georgia'}
-2024-04-10 09:48:13 - mean_by_category_state called{'question': 'Percent of adults who engage in muscle-strengthening activities on 2 or more days a week', 'state': 'Wisconsin'}
-2024-04-10 09:48:13 - mean_by_category_state called{'question': 'Percent of adults aged 18 years and older who have an overweight classification', 'state': 'Oklahoma'}
-2024-04-10 09:48:13 - mean_by_category_state called{'question': 'Percent of adults aged 18 years and older who have obesity', 'state': 'Georgia'}
-2024-04-10 09:48:13 - get_states_data called{'question': 'Percent of adults who achieve at least 300 minutes a week of moderate-intensity aerobic physical activity or 150 minutes a week of vigorous-intensity aerobic activity (or an equivalent combination)'}
-2024-04-10 09:48:14 - get_states_data called{'question': 'Percent of adults aged 18 years and older who have obesity'}
-2024-04-10 09:48:15 - get_states_data called{'question': 'Percent of adults who report consuming vegetables less than one time daily'}
-2024-04-10 09:48:15 - get_states_data called{'question': 'Percent of adults who engage in no leisure-time physical activity'}
-2024-04-10 09:48:16 - get_states_data called{'question': 'Percent of adults who achieve at least 150 minutes a week of moderate-intensity aerobic physical activity or 75 minutes a week of vigorous-intensity aerobic activity (or an equivalent combination)'}
-2024-04-10 09:48:16 - get_states_data called{'question': 'Percent of adults who engage in muscle-strengthening activities on 2 or more days a week'}
-2024-04-10 09:48:17 - get_states_data called{'question': 'Percent of adults who achieve at least 150 minutes a week of moderate-intensity aerobic physical activity or 75 minutes a week of vigorous-intensity aerobic physical activity and engage in muscle-strengthening activities on 2 or more days a week'}
-2024-04-10 09:48:17 - get_states_data called{'question': 'Percent of adults aged 18 years and older who have an overweight classification'}
-2024-04-10 09:48:18 - get_states_data called{'question': 'Percent of adults who report consuming fruit less than one time daily'}
-2024-04-10 09:48:18 - worst_5 called{'question': 'Percent of adults who achieve at least 300 minutes a week of moderate-intensity aerobic physical activity or 150 minutes a week of vigorous-intensity aerobic activity (or an equivalent combination)'}
-2024-04-10 09:48:18 - get_states_data called{'question': 'Percent of adults who achieve at least 300 minutes a week of moderate-intensity aerobic physical activity or 150 minutes a week of vigorous-intensity aerobic activity (or an equivalent combination)'}
-2024-04-10 09:48:19 - worst_5 called{'question': 'Percent of adults aged 18 years and older who have obesity'}
-2024-04-10 09:48:19 - get_states_data called{'question': 'Percent of adults aged 18 years and older who have obesity'}
-2024-04-10 09:48:20 - worst_5 called{'question': 'Percent of adults who report consuming vegetables less than one time daily'}
-2024-04-10 09:48:20 - get_states_data called{'question': 'Percent of adults who report consuming vegetables less than one time daily'}
-2024-04-10 09:48:20 - worst_5 called{'question': 'Percent of adults who engage in no leisure-time physical activity'}
-2024-04-10 09:48:20 - get_states_data called{'question': 'Percent of adults who engage in no leisure-time physical activity'}
-2024-04-10 09:48:21 - worst_5 called{'question': 'Percent of adults who achieve at least 150 minutes a week of moderate-intensity aerobic physical activity or 75 minutes a week of vigorous-intensity aerobic activity (or an equivalent combination)'}
-2024-04-10 09:48:21 - get_states_data called{'question': 'Percent of adults who achieve at least 150 minutes a week of moderate-intensity aerobic physical activity or 75 minutes a week of vigorous-intensity aerobic activity (or an equivalent combination)'}
-2024-04-10 09:48:21 - worst_5 called{'question': 'Percent of adults who engage in muscle-strengthening activities on 2 or more days a week'}
-2024-04-10 09:48:21 - get_states_data called{'question': 'Percent of adults who engage in muscle-strengthening activities on 2 or more days a week'}
-2024-04-10 09:48:22 - worst_5 called{'question': 'Percent of adults who achieve at least 150 minutes a week of moderate-intensity aerobic physical activity or 75 minutes a week of vigorous-intensity aerobic physical activity and engage in muscle-strengthening activities on 2 or more days a week'}
-2024-04-10 09:48:22 - get_states_data called{'question': 'Percent of adults who achieve at least 150 minutes a week of moderate-intensity aerobic physical activity or 75 minutes a week of vigorous-intensity aerobic physical activity and engage in muscle-strengthening activities on 2 or more days a week'}
-2024-04-10 09:48:22 - worst_5 called{'question': 'Percent of adults aged 18 years and older who have an overweight classification'}
-2024-04-10 09:48:22 - get_states_data called{'question': 'Percent of adults aged 18 years and older who have an overweight classification'}
-2024-04-10 09:48:23 - worst_5 called{'question': 'Percent of adults who report consuming fruit less than one time daily'}
-2024-04-10 09:48:23 - get_states_data called{'question': 'Percent of adults who report consuming fruit less than one time daily'}
+2024-04-10 10:27:59 - mean_by_category_state called{'question': 'Percent of adults aged 18 years and older who have obesity', 'state': 'Oklahoma'}
+2024-04-10 10:28:00 - mean_by_category_state called{'question': 'Percent of adults aged 18 years and older who have an overweight classification', 'state': 'Wisconsin'}
+2024-04-10 10:28:00 - mean_by_category_state called{'question': 'Percent of adults who achieve at least 150 minutes a week of moderate-intensity aerobic physical activity or 75 minutes a week of vigorous-intensity aerobic physical activity and engage in muscle-strengthening activities on 2 or more days a week', 'state': 'Oklahoma'}
+2024-04-10 10:28:00 - mean_by_category_state called{'question': 'Percent of adults aged 18 years and older who have obesity', 'state': 'Connecticut'}
+2024-04-10 10:28:00 - mean_by_category_state called{'question': 'Percent of adults aged 18 years and older who have an overweight classification', 'state': 'Connecticut'}
+2024-04-10 10:28:01 - mean_by_category_state called{'question': 'Percent of adults who achieve at least 150 minutes a week of moderate-intensity aerobic physical activity or 75 minutes a week of vigorous-intensity aerobic physical activity and engage in muscle-strengthening activities on 2 or more days a week', 'state': 'Connecticut'}
+2024-04-10 10:28:01 - mean_by_category_state called{'question': 'Percent of adults who report consuming vegetables less than one time daily', 'state': 'Wisconsin'}
+2024-04-10 10:28:01 - mean_by_category_state called{'question': 'Percent of adults who achieve at least 150 minutes a week of moderate-intensity aerobic physical activity or 75 minutes a week of vigorous-intensity aerobic physical activity and engage in muscle-strengthening activities on 2 or more days a week', 'state': 'Wisconsin'}
+2024-04-10 10:28:01 - mean_by_category_state called{'question': 'Percent of adults aged 18 years and older who have obesity', 'state': 'Wisconsin'}
+2024-04-10 10:28:01 - mean_by_category_state called{'question': 'Percent of adults aged 18 years and older who have an overweight classification', 'state': 'Georgia'}
+2024-04-10 10:28:02 - mean_by_category_state called{'question': 'Percent of adults who engage in muscle-strengthening activities on 2 or more days a week', 'state': 'Georgia'}
+2024-04-10 10:28:02 - mean_by_category_state called{'question': 'Percent of adults who engage in muscle-strengthening activities on 2 or more days a week', 'state': 'Wisconsin'}
+2024-04-10 10:28:02 - mean_by_category_state called{'question': 'Percent of adults aged 18 years and older who have an overweight classification', 'state': 'Oklahoma'}
+2024-04-10 10:28:02 - mean_by_category_state called{'question': 'Percent of adults aged 18 years and older who have obesity', 'state': 'Georgia'}
+2024-04-10 10:28:03 - get_states_data called{'question': 'Percent of adults who achieve at least 300 minutes a week of moderate-intensity aerobic physical activity or 150 minutes a week of vigorous-intensity aerobic activity (or an equivalent combination)'}
+2024-04-10 10:28:03 - get_states_data called{'question': 'Percent of adults aged 18 years and older who have obesity'}
+2024-04-10 10:28:04 - get_states_data called{'question': 'Percent of adults who report consuming vegetables less than one time daily'}
+2024-04-10 10:28:04 - get_states_data called{'question': 'Percent of adults who engage in no leisure-time physical activity'}
+2024-04-10 10:28:05 - get_states_data called{'question': 'Percent of adults who achieve at least 150 minutes a week of moderate-intensity aerobic physical activity or 75 minutes a week of vigorous-intensity aerobic activity (or an equivalent combination)'}
+2024-04-10 10:28:06 - get_states_data called{'question': 'Percent of adults who engage in muscle-strengthening activities on 2 or more days a week'}
+2024-04-10 10:28:06 - get_states_data called{'question': 'Percent of adults who achieve at least 150 minutes a week of moderate-intensity aerobic physical activity or 75 minutes a week of vigorous-intensity aerobic physical activity and engage in muscle-strengthening activities on 2 or more days a week'}
+2024-04-10 10:28:07 - get_states_data called{'question': 'Percent of adults aged 18 years and older who have an overweight classification'}
+2024-04-10 10:28:07 - get_states_data called{'question': 'Percent of adults who report consuming fruit less than one time daily'}
+2024-04-10 10:28:08 - worst_5 called{'question': 'Percent of adults who achieve at least 300 minutes a week of moderate-intensity aerobic physical activity or 150 minutes a week of vigorous-intensity aerobic activity (or an equivalent combination)'}
+2024-04-10 10:28:08 - get_states_data called{'question': 'Percent of adults who achieve at least 300 minutes a week of moderate-intensity aerobic physical activity or 150 minutes a week of vigorous-intensity aerobic activity (or an equivalent combination)'}
+2024-04-10 10:28:08 - worst_5 called{'question': 'Percent of adults aged 18 years and older who have obesity'}
+2024-04-10 10:28:08 - get_states_data called{'question': 'Percent of adults aged 18 years and older who have obesity'}
+2024-04-10 10:28:09 - worst_5 called{'question': 'Percent of adults who report consuming vegetables less than one time daily'}
+2024-04-10 10:28:09 - get_states_data called{'question': 'Percent of adults who report consuming vegetables less than one time daily'}
+2024-04-10 10:28:09 - worst_5 called{'question': 'Percent of adults who engage in no leisure-time physical activity'}
+2024-04-10 10:28:09 - get_states_data called{'question': 'Percent of adults who engage in no leisure-time physical activity'}
+2024-04-10 10:28:10 - worst_5 called{'question': 'Percent of adults who achieve at least 150 minutes a week of moderate-intensity aerobic physical activity or 75 minutes a week of vigorous-intensity aerobic activity (or an equivalent combination)'}
+2024-04-10 10:28:10 - get_states_data called{'question': 'Percent of adults who achieve at least 150 minutes a week of moderate-intensity aerobic physical activity or 75 minutes a week of vigorous-intensity aerobic activity (or an equivalent combination)'}
+2024-04-10 10:28:11 - worst_5 called{'question': 'Percent of adults who engage in muscle-strengthening activities on 2 or more days a week'}
+2024-04-10 10:28:11 - get_states_data called{'question': 'Percent of adults who engage in muscle-strengthening activities on 2 or more days a week'}
+2024-04-10 10:28:11 - worst_5 called{'question': 'Percent of adults who achieve at least 150 minutes a week of moderate-intensity aerobic physical activity or 75 minutes a week of vigorous-intensity aerobic physical activity and engage in muscle-strengthening activities on 2 or more days a week'}
+2024-04-10 10:28:11 - get_states_data called{'question': 'Percent of adults who achieve at least 150 minutes a week of moderate-intensity aerobic physical activity or 75 minutes a week of vigorous-intensity aerobic physical activity and engage in muscle-strengthening activities on 2 or more days a week'}
+2024-04-10 10:28:12 - worst_5 called{'question': 'Percent of adults aged 18 years and older who have an overweight classification'}
+2024-04-10 10:28:12 - get_states_data called{'question': 'Percent of adults aged 18 years and older who have an overweight classification'}
+2024-04-10 10:28:13 - worst_5 called{'question': 'Percent of adults who report consuming fruit less than one time daily'}
+2024-04-10 10:28:13 - get_states_data called{'question': 'Percent of adults who report consuming fruit less than one time daily'}

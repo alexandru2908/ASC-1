@@ -40,7 +40,7 @@ def get_response(job_id):
     print(f"JobID is {job_id}")
     if int(job_id) not in webserver.tasks_runner.get_ids:
         return jsonify({"status": "error", "reason": "Invalid job_id"})
-    elif int(job_id) in webserver.tasks_runner.get_ids and os.path.exists(f"results/{job_id}.json"):
+    elif int(job_id) in webserver.tasks_runner.tasks_done:
         with open(f"./results/{job_id}.json", "r") as file:
             result = json.load(file)
         return jsonify({"status": "done", "data": result})
